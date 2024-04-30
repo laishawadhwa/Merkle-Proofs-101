@@ -58,6 +58,16 @@ The first thing we want to do is to derive our leaf nodes. Each parent node that
 Once we have hashed all of the addresses on our whitelist, thus obtaining our leaf nodes, we can now create the Merkle Tree object. We'll be using the merkletreejs library and by calling the new MerkleTree() function, passing our leaf nodes as the first argument, our hashing algorithm as the second, and the { sortPairs: true } option as the last. Setting it to true allows the proof to be more succinct.
 ![build tree](images/getTree.png)
 
+### Verification of Presence in Merkle Trees
+Instead of checking every leaf node in the Merkle Tree, we utilize a Merkle Proof to verify the inclusion of specific data. This proof offers a concise way to demonstrate that the data exists within the tree without needing to reveal the entire dataset.
+
+In the diagram above, let's think about what info must be given to the Verifier that will positively prove to the Verifier that B is part of the Merkle Tree.
+- Value of B itself (so Verifier can compute Hash(B) on its own)
+- H(A), so the verifier can compute Hash(AB)
+- H(CD) so the verifier can compute Hash(ABCD)
+  
+It's important to note that only one given combination of nodes can generate this unique root Hash(ABCD) because the Merkle tree is a collision-resistant hash function which means it is a hash function that given two inputs is almost impossible to produce the same output. At this point, if the computed value of Hash(ABCD) matches the previously known value of the root hash that the Verifier had, it must be true that **B** existed in the Merkle Tree, or else the hashes wouldn't be the same.
+
 ### Running the project
 - Navigate to the **src** directory.
 - Run the following command ``` npm install ```.
