@@ -44,7 +44,10 @@ Merkle Proofs find applications in various fields:
 3. **Cryptographic Verification**: Merkle Proofs are integral to cryptographic systems for ensuring the integrity of data in a transparent and efficient manner.
 
 ## **Example: Email Address Whitelisting**
-Merkle Trees have long been a facet in the fields of both cryptography and computer science well before the blockchain we know today ever existed. Nowadays, we are slowly starting to see them become more frequently used on-chain for the purpose of data verification.
+Merkle Trees have long been a facet in the fields of both cryptography and computer science well before the blockchain we know today ever existed. Nowadays, we are slowly starting to see them become more frequently used on-chain for the purpose of data verification. Let's say we have 4 IDS: Email Address A, B, C, and D. Each of these email addresses is going to get hashed. Let's call those hashes Hash A, B, C, and D respectively.
+
+The following would be the resulting Merkle Tree of these transactions:
+![Merkle Tree Example](images/merkletreeeg)
 
 Merkle Trees must be pre-calculated and therefore use some form of data that is distinct per member. In this context, lets say a single leaf node represents a single email address in our whitelist. Lets assume that we have implemented a whitelist strategy where an arbitrary number of rewards have been reserved for select email addresses that may have been chosen through means of a competition, raffle, or some other system. These whitelisted addresses have been granted the ability to claim their rewards at some point in time. Since these addresses are known and are constant, we can use this information to create a Merkle Tree. To demonstrate this, will utilize [merkletreejs](https://www.npmjs.com/package/merkletreejs) and [keccak256](https://www.npmjs.com/package/keccak256) JavaScript libraries.
 
