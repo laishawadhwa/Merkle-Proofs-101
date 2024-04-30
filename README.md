@@ -52,6 +52,15 @@ Merkle Trees must be pre-calculated and therefore use some form of data that is 
 The first thing we want to do is to derive our leaf nodes. Each parent node that sits directly above leaf nodes on a tree will only ever foster a maximum of two leaf nodes. If an uneven number of leaf nodes exist, a parent node will foster a single leaf node. Each leaf node should be some form of hashed data, so for this example, lets use the keccak256 library to hash all of the addresses on our whitelist.
 ![Derive Leaf Nodes](images/deriveleafnodes.png)
 
-Once we have hashed all of the addresses on our whitelist, thus obtaining our leaf nodes, we are now able to create the Merkle Tree object. We do this using the merkletreejs library and by calling the new MerkleTree() function, passing our leaf nodes as the first argument, our hashing algorithm as the second, and the { sortPairs: true } option as the last.
+Once we have hashed all of the addresses on our whitelist, thus obtaining our leaf nodes, we can now create the Merkle Tree object. We'll be using the merkletreejs library and by calling the new MerkleTree() function, passing our leaf nodes as the first argument, our hashing algorithm as the second, and the { sortPairs: true } option as the last. Setting it to true allows the proof to be more succinct.
+![build tree](images/getTree.png)
+
+### Running the project
+- Navigate to the **src** directory.
+- Run the following command ``` npm install ```.
+- You can add Email addresses of your choice in the whitelist.json file. (Currently it has 3 email addresses).
+- The main code for derive the leaf nodes and building the merkle tree is in the index.js file. You can simply run this .js file and see the output of the tree being built and the proof being generated given the leaf provided.
+
+![Program output](images/progoutput.png)
 
 In essence, Merkle Proofs leverage the power of cryptographic hashing and binary tree structures to provide succinct and verifiable proofs of data inclusion. By enabling efficient integrity checks without revealing sensitive information, Merkle Proofs play a vital role in enhancing the security and scalability of decentralized systems.
