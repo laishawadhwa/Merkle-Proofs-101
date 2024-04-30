@@ -43,5 +43,15 @@ Merkle Proofs find applications in various fields:
 2. **Data Synchronization**: In distributed systems, Merkle Trees facilitate efficient data synchronization by identifying differences between datasets.
 3. **Cryptographic Verification**: Merkle Proofs are integral to cryptographic systems for ensuring the integrity of data in a transparent and efficient manner.
 
+## **Example: Email Address Whitelisting**
+Merkle Trees have long been a facet in the fields of both cryptography and computer science well before the blockchain we know today ever existed. Nowadays, we are slowly starting to see them become more frequently used on-chain for the purpose of data verification.
+
+Merkle Trees must be pre-calculated and therefore use some form of data that is distinct per member. In this context, lets say a single leaf node represents a single email address in our whitelist. Lets assume that we have implemented a whitelist strategy where an arbitrary number of rewards have been reserved for select email addresses that may have been chosen through means of a competition, raffle, or some other system. These whitelisted addresses have been granted the ability to claim their rewards at some point in time. Since these addresses are known and are constant, we can use this information to create a Merkle Tree. To demonstrate this, will utilize [merkletreejs](https://www.npmjs.com/package/merkletreejs) and [keccak256](https://www.npmjs.com/package/keccak256) JavaScript libraries.
+
+## **Implementation**
+The first thing we want to do is to derive our leaf nodes. Each parent node that sits directly above leaf nodes on a tree will only ever foster a maximum of two leaf nodes. If an uneven number of leaf nodes exist, a parent node will foster a single leaf node. Each leaf node should be some form of hashed data, so for this example, lets use the keccak256 library to hash all of the addresses on our whitelist.
+![Derive Leaf Nodes](images/deriveleafnodes.png)
+
+Once we have hashed all of the addresses on our whitelist, thus obtaining our leaf nodes, we are now able to create the Merkle Tree object. We do this using the merkletreejs library and by calling the new MerkleTree() function, passing our leaf nodes as the first argument, our hashing algorithm as the second, and the { sortPairs: true } option as the last.
 
 In essence, Merkle Proofs leverage the power of cryptographic hashing and binary tree structures to provide succinct and verifiable proofs of data inclusion. By enabling efficient integrity checks without revealing sensitive information, Merkle Proofs play a vital role in enhancing the security and scalability of decentralized systems.
