@@ -17,6 +17,8 @@ Merkle Trees are a tree-like structure where every node on the tree is represent
 
 3. **Root Node** — The root node sits at the top of the tree and is derived from the hash of the concatenated hashes of the two parent nodes that sit below it, again starting from left-to-right. There is only ever a single root node on any Merkle Tree and the root node possess the root hash.
 
+![Merkle Tree](https://github.com/laishawadhwa/Merkle-Proofs-101/blob/main/images/merkleTree.png))
+
 ### So, why the hype about Merkle Proofs? 
 Well, imagine you're Sherlock Holmes trying to prove a tiny clue exists in a massive case file without flipping through every page. Merkle Proofs hand you a shortcut – a trail of breadcrumbs leading from your clue to the case file's seal of approval. With this breadcrumb trail, anyone can confirm your clue's existence without sifting through the entire mystery.
 
