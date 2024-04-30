@@ -42,6 +42,10 @@ Merkle Proofs find applications in various fields:
 1. **Blockchain Transactions**: In blockchain networks like Bitcoin and Ethereum, Merkle Proofs enable lightweight clients to verify transactions without downloading the entire blockchain.
 2. **Data Synchronization**: In distributed systems, Merkle Trees facilitate efficient data synchronization by identifying differences between datasets.
 3. **Cryptographic Verification**: Merkle Proofs are integral to cryptographic systems for ensuring the integrity of data in a transparent and efficient manner.
+An example of such verification would be whitelisting addresses for NFT minting
+
+When minting NFTs, whitelisting ensures that only authorized individuals or entities can participate. Merkle Proofs streamline this process by providing a succinct and verifiable way to confirm whitelist status. Instead of individually checking each participant against a whitelist and storing data in smart contract storage (which is an expensive operation in terms of gas)  a Merkle Proof allows for rapid verification of multiple addresses in a single operation. And while for a small number of addresses a map based approach works, what if you had to store 100,000 addresses?
+
 
 ## **Example: Email Address Whitelisting**
 Merkle Trees have long been a facet in the fields of both cryptography and computer science well before the blockchain we know today ever existed. Nowadays, we are slowly starting to see them become more frequently used on-chain for the purpose of data verification. Let's say we have 4 IDS: Email Address A, B, C, and D. Each of these email addresses is going to get hashed. Let's call those hashes Hash A, B, C, and D respectively.
